@@ -1,4 +1,4 @@
-# PSENrd 3.1 live and IndustrialPI 4
+# PSENrd 3.1 live and RevPi Connect 4
 
 <div style="display: flex; flex-direction: column; align-items: center;">
     <a href="https://www.pilz.com" rel="nofollow">
@@ -6,21 +6,21 @@
     </a><br/>
 </div>
 
-## Limitation of Liability
+## Exclusion of Liability
 
-We have taken great care in compiling our documentation. It contains information about our company and our products. All statements are made in accordance with the current status of technology and to the best of our knowledge and belief.
+We have taken great care in compiling our application note. It contains information about our company and our products. All statements are made in accordance with the current status of technology and to the best of our knowledge and belief.
 While every effort has been made to ensure the information provided is accurate, we cannot accept liability for the accuracy and entirety of the information provided, except in the case of gross negligence. In particular, all information on applicable standards, safety-related classifications and time characteristics should be viewed as provisional. In particular it should be noted that statements do not have the legal quality of assurances or assured properties.
 We are grateful for any feedback on the contents.<br/>
-February 2025<br/>
+May 2026<br/>
 All rights to this publication are reserved by Pilz GmbH & Co. KG.
-We reserve the right to amend specifications without prior notice.
+We reserve the right to amend specifications without prior notice. Copies may be made for the user’s internal purposes.
 The names of products, goods and technologies used in this manual are trademarks of the respective companies. Please note the current information about the products, their licenses and registered trademarks in the documents listed in [Useful documentation](#1-useful-documentation).<br/>
 
 ## Industrial Security
 
-To secure plants, systems, machines and networks against cyberthreats it is necessary to implement (and continuously maintain) an overall [Industrial Security concept](https://www.pilz.com/en-INT/products/industrial-security) that is state of the art.
+To secure plants, systems, machines and networks against cyberthreats it is necessary to implement (and continuously maintain) an overall &#128279;[Industrial Security concept](https://www.pilz.com/en-INT/products/industrial-security) that is state of the art.
 Perform a risk assessment in accordance with VDI/VDE 2182 or IEC 62443-3-2 and plan the security measures with care. If necessary, seek advice from<br/>
-[Pilz Customer Support](https://www.pilz.com/en-INT/support/technical-support).<br/>
+&#128279;[Pilz Customer Support](https://www.pilz.com/en-INT/support/technical-support).<br/>
 
 ## Definition of Symbols
 
@@ -40,15 +40,17 @@ Information that is particularly important is identified as follows:<br/>
 
 ## Contents and Setup steps
 
-1.  [Useful documentation](#1-useful-documentation)<br/>
+1.  [Useful documentation and Links to Third-Party Websites](#1-useful-documentation-and-links-to-third-party-websites)<br/>
 1.1 [Documentation form Pilz GmbH & Co. KG](#11-documentation-from-pilz-gmbh--co-kg)<br/>
+1.2 [Documentation from Kunbus GmbH](#12-documentation-from-kunbus-gmbh)<br/>
 2.  [Hardware and software used](#2-hardware-and-software-used)<br/>
 2.1 [Pilz products](#21-pilz-products)<br/>
-2.2 [Third-party products](#22-third-party-products)<br/>
-2.3 [Structure of the application (schematic)](#23-structure-of-the-application-schematic)<br/>
+2.2 [Kunbus products](#22-kunbus-products)<br/>
+2.3 [Third-party products](#23-third-party-products)<br/>
+2.4 [Structure of the application (schematic)](#24-structure-of-the-application-schematic)<br/>
 3.  [Preface](#3-preface)<br/>
 4.  [Application description](#4-application-description)<br/>
-5.  [First steps to start IndustrialPI 4](#5-first-steps-to-start-industrialpi-4)<br/>
+5.  [First steps to start RevPi Connect 4](#5-first-steps-to-start-revpi-connect-4)<br/>
 5.1 [Password](#51-password)<br/>
 5.2 [Instructions for changing the keyboard settings](#52-instructions-for-changing-the-keyboard-settings)<br/>
 5.3 [Automated Installation and Configuration](#53-automated-installation-and-configuration)<br/>
@@ -61,10 +63,10 @@ Information that is particularly important is identified as follows:<br/>
 6.4 [Configurate Mosquitto Broker](#64-configurate-mosquitto-broker)<br/>
 6.5 [Start mosquitto service](#65-start-mosquitto-service)<br/>
 7.  [Setup and Configuration NTP Server](#7-setup-and-configuration-ntp-server)<br/>
-8.  [WiFi Configuration](#8-wifi-configuration)<br/>
+8.  [WiFi Configuration with guaranteed wpa2 support](#8-wifi-configuration-with-guaranteed-wpa2-support)<br/>
 8.1 [Install dnsmasq](#81-install-dnsmasq)<br/>
 8.2 [Set up WiFi connection](#82-set-up-wifi-conncetion)<br/>
-8.3 [Set up Cockpit-IndustrialPI 4](#83-set-up-cockpit-industrialpi-4)<br/>
+8.3 [Set up WiFi and BT](#83-set-up-cockpit-revpi-connect-4-wifi-and-bt)<br/>
 9.  [Testing of Data exchange](#9-testing-of-data-exchange)<br/>
 10. [Integration of a python program](#10-integration-of-a-python-program)<br/>
 10.1 [Work with USB-Stick](#101-work-with-usb-stick)<br/>
@@ -76,18 +78,25 @@ Information that is particularly important is identified as follows:<br/>
 11.3 [Using the remote desktop connection](#113-using-the-remotedesktop-connection)<br/>
 12. [License Information](#12-license-information)<br/>
 
-## 1. Useful documentation
+## 1. Useful documentation and Links to Third-Party Websites
 
 Reading the documentations listed below is necessary for understanding this Application.<br/>
-The availability of the software used, and its safe handling are also presupposed for the user.
+The availability of the software used, and its safe handling are also presupposed for the user.<br/>
+<br/>
+The scenario described below illustrates a possible application example for using the Pilz product PSENrd 3.1 live in conjunction with third-party system. For further information on the third-party system, please refer to the documentation provided by the respective manufacturer. The links provided refer to external third-party content. The respective provider is solely responsible for the content, timeliness, and availability of that content.
 
 ### 1.1 Documentation from Pilz GmbH & Co. KG
 
 |Nr.| Discription | Part number/ Download|
 |---| ------------| ---------------------|
-| 1 | Pilz international website, download section | [www.pilz.com >EN Support >Downloads](https://www.pilz.com/en-INT/support/downloads)<br/> [www.pilz.com > DE Support > Downloads](https://www.pilz.com/de-INT/support/downloads)<br/> |
-| 2 | Operating manual of PSEN rd3.1 live| The documentation is currently still being prepared and will be made available at a later date. We will inform you as soon as it is available. |                                                
-| 3 | Operating manual of IndutrialPI 4 |[www.pilz.com >EN Operat.Man. 1006970-01](https://www.pilz.com/en-INT/search#currentPage=1&SEARCH=1006970)<br/>[www.pilz.com >DE Bed.anl. 1006970-01](https://www.pilz.com/de-INT/search#currentPage=1&SEARCH=1006970)<br/> |
+| 1 | Pilz international website, download section | &#128279;[www.pilz.com >EN Support >Downloads](https://www.pilz.com/en-INT/support/downloads)<br/>&#128279;[www.pilz.com > DE Support > Downloads](https://www.pilz.com/de-INT/support/downloads)<br/> |
+| 2 | Operating manual of PSEN rd3.1 live| The documentation is currently still being prepared and will be made available at a later date. We will inform you as soon as it is available. |
+
+### 1.2 Documentation from Kunbus GmbH
+|Nr.| Discription | Part number/ Download|
+| 3 | Product Description of RevPi Connect 4 |&#128279;[www.revolutionpi.com >EN](https://revolutionpi.com/en/docs/revpi-connect-4)<br/>&#128279;[www.revolutionpi.com >DE](https://revolutionpi.com/de/docs/revpi-connect-4)<br/> |
+
+<!--screenshot unter PSENrd_3 -> Documents -> Screenshot_GitHub_Appl_with_RevPi4 RevPi Connect 4_en_docs_.png and RevPi Connect 4_de_docs.png -->
 
 ## 2. Hardware and software used
 
@@ -95,14 +104,19 @@ The availability of the software used, and its safe handling are also presuppose
 
 |Nr.| Discription | Order number| Version| Quantity|
 |---| ------------|-------------| -------| --------|
-| 1 | IndustrialPI| A1000003    |   4    |    1    |
-| 2 | PSENrd      | 6B000017    |  3.1   |    1    |
-| 3 | PSEN op cable axial M12 5-pole, 3m| 630310 | - | 1 |
+| 1 | PSENrd      | 6B000017    |  3.1   |    1    |
+| 2 | PSEN op cable axial M12 5-pole, 3m| 630310 | - | 1 |
+
+### 2.2 Kunbus products
+
+|Nr.| Discription | Order number| Version| Quantity|
+|---| ------------|-------------| -------| --------|
+| 1 | RevPi Connect 4| 100380   |  4     |    1    |
 
 > [!IMPORTANT]
-> We only use the IndustrialPI 4 (A1000003) here for the application with WiFi network. Because only the IndustrialPI 4 has a WiFi antenna connection.<br/> 
+> We only use the RevPi Connect 4 (100380) here for the application with WiFi network. Because the RevPi Connect 4 (100380) has a WiFi antenna connection.<br/> 
 
-### 2.2 Third-party products
+### 2.3 Third-party Equipment
 
 |Nr.| Discription | Order number| Version| Quantity|
 |---| ------------|-------------| -------| --------|
@@ -114,21 +128,23 @@ The availability of the software used, and its safe handling are also presuppose
 | 6 | Antenna (optional)|   -   |    -   |    1    |
 | 7 | Ethernet cable |      -   |    -   |    1    |
 
-### 2.3 Structure of the application (schematic)
+### 2.4 Structure of the application (schematic)
 
 <div style="display: flex; flex-direction: column; align-items: center;">
-        <img src="/img/Pilz_IndustrialPI_4_and_PSENrd_3_1_live.png" alt="Structure of the application (schematic)" width="800">
+        <img src="/img/RevPI4_and_PSENrd3_1_live.png" alt="Structure of the application (schematic)" width="800">
     </a><br/>
 </div>
 
 ## 3. Preface
 
-This application basically describes the commissioning process of a PSENrd 3.1 with an IndustrialPI 4. Both devices communicate with each other using MQTT.
-Data is sent from the PSENrd 3.1 to the internal access point of the IndustrialPI 4. This data is sent to the Python program provided and processed there.<br/>
-The basic procedure for successful basic configuration is shown here step-by-step, mostly using command lines. The operating system used is Debain GNU/Linux 12 (bookworm-arm64.img). [www.pilz.com >eShop](https://www.pilz.com/en-INT/eshop/Controller/Industrial-PC/IndustrialPI-/IndustrialPI-Accessories/IndustrialPI-4-8GB-32GB-Wifi/p/A1000003)<br/> 
+This application basically describes the commissioning process of a PSENrd 3.1 with an RevPi Connect 4. Both devices communicate with each other using MQTT.
+Data is sent from the PSENrd 3.1 to the internal access point of the RevPi Connect 4. This data is sent to the Python program provided and processed there.<br/>
+The basic procedure for successful basic configuration is shown here step-by-step, mostly using command lines. The operating system used is Debain GNU/Linux 12 (bookworm-arm64.img). &#128279;[www.revolutionpi.com >Operating System-Images](https://revolutionpi.com/en/docs/revpi-bookworm)<br/> 
+
+<!--screenshot unter PSENrd_3 -> Documents -> Screenshot_GitHub_Appl_with_RevPi4 -> revolutionpi.com_en_docs_revpi_bookworm.png -->
 
 > [!IMPORTANT]
-> This document only describes the procedure for using the IndustrialPI 4 (A1000003) and PSENrd 3.1 (6B000017) and does not constitute technical documentation on the general use of the operating system Linux and the program language Python. The operating system and the programming language are basic requirements for this application.
+> This document only describes the procedure for using the RevPi Connect 4 (100380) and PSENrd 3.1 (6B000017) and does not constitute technical documentation on the general use of the operating system Linux and the program language Python. The operating system and the programming language are basic requirements for this application.
 
 ## 4. Application description
 
@@ -137,19 +153,19 @@ The example here shows people counting to determine whether one or more people a
 There are several requirements for the realization of this application:<br/>
 
 + Data transmission takes place via MQTT.<br/>
-+ Evaluation of the sensor data in the IndustrialPI 4 in real time.<br/>
++ Evaluation of the sensor data in the RevPi Connect 4 in real time.<br/>
 + Recording of personal data in a specific area.<br/>
-+ All persons detected by the PSENrd 3.1 sensor are recorded and processed by the IndustrialPI 4.<br/>
++ All persons detected by the PSENrd 3.1 sensor are recorded and processed by the RevPi Connect 4.<br/>
 
 Non-functional requirements:<br/>
 
 + Stability and reliability of the system.<br/>
-+ Simple setup and handling of the operating system on the IndustrialPI 4.<br/>
++ Simple setup and handling of the operating system on the RevPi Connect 4.<br/>
 
 The structure of the system and components is based on:<br/>
-[2.3 Structure of the application (schematic)](#23-structure-of-the-application-schematic)<br/>
+[2.4 Structure of the application (schematic)](#24-structure-of-the-application-schematic)<br/>
 
-## 5. First Steps to start IndustrialPI 4 
+## 5. First Steps to start RevPi Connect 4
 
 ### 5.1 Password 
 
@@ -157,59 +173,30 @@ The structure of the system and components is based on:<br/>
 > Depending on how this network access is secured, strangers may also be able to log into the device and gain access to data and all functions. Therefore, always choose a
 <ins>"strong"</ins> password and work in "headless" mode, i.e. only access the network from devices that you know. Unknown devices could, for example, log keystrokes and thus spy on your login data. 
 
-+ First of all, connect the IndustrialPI 4 to a monitor. A micro HDMI is available on the IndustrialPI 4.<br/>
-+ Connect a keyboard via the IndustrialPI 4 USB ports.<br/>
-+ Start the IndustrialPI 4 with the 24VDC supply. The IndustrialPI 4 then boots up.<br/>
-+ Enter the password shown on the sticker on the side of the IndustrialPI 4.
++ First of all, connect the RevPi Connect 4 to a monitor. A micro HDMI is available on the RevPi Connect 4.<br/>
++ Connect a keyboard via the RevPi Connect 4 USB ports.<br/>
++ Start the RevPi Connect 4 with the 24VDC supply. The RevPi Connect 4 then boots up.<br/>
++ Open the Cockpit. Please follow for this topic the instructions Configuration with Cockpit &#128279;[Configuration with Cockpit](https://revolutionpi.com/en/docs/cockpit)<br/>
++ Follow the instructions under accounts and password managemant &#128279;[Accounts and Password Management](https://revolutionpi.com/en/docs/cockpit#accounts)<br/>
++ Follow the instructions under changing password &#128279;[Changing Password](https://revolutionpi.com/en/knowledge/login-via-terminal#change-pswd)<br/>
 
-> [!Important]
-> After the first login, change the default password in the command line and in the web application, immediately.
-```
-sudo raspi-config
-```
-+ Select system options.<br/>
-+ Under system options select S3 password.<br/>
-+ You will asked to enter a new password.<br/>
-+ Click OK.<br/>
-+ choose a <ins>strong<ins> password.<br/>
-+ retype the new password.<br/>
-+ The password changed successfully.<br/>
-
-> [!Tip]
-><ins>Installation after a new Image:</ins><br/>
-The first login of the IndustrialPI 4 is:<br/>
-Username: pi <br/> Password: raspberry<br/>
-Information comes: The device configuration was detected automatically.
-Manual configuration is therefore not necessary.<br/>
-Press okay.<br/> 
-You will now be asked to use the password on the sticker.<br/>
+<!--screenshot unter PSENrd_3 -> Documents -> Screenshot_GitHub_Appl_with_RevPi4 -> revolutionpi.com_en_docs_cockpit.png -->
+<!--screenshot unter PSENrd_3 -> Documents -> Screenshot_GitHub_Appl_with_RevPi4 -> revolutionpi.com_en_docs_cockpit_accounts.png -->
+<!--screenshot unter PSENrd_3 -> Documents -> Screenshot_GitHub_Appl_with_RevPi4 -> revolutionpi.com_en_knowledge_login_via_terminal_change_pswd.png -->
 
 > [!Tip]
 > When you enter password, the letters and special characters are not displayed.
-
-> [!Tip]
-> Please note that the standard keyboard is set to English (US). This means that the Z and Y keys are reversed, for example on German keyboards. Please note this when entering the password.
 
 > [!Tip]
 > The letter l (small L) can easily be confused with the number 1 (one). Make sure you use the correct character.<br/>
 
 ### 5.2 Instructions for changing the keyboard settings
 
-Open the RaspberryPI Software Configuration Tool (raspi-config):<br/>
++ Open the Cockpit.
++ Configure under regional settings your time zone.
 
 > [!Tip]
 > On the English keyboard, the character - (hyphen) corresponds to the character ? (question mark). Make sure you take this into account when entering.
-```
-sudo raspi-config
-```
-+ Select localisation options.<br/>
-+ Then select L3 Keyboard.<br/>
-+ Select the model of your keyboard.<br/>
-+ Go to the sub-item other.<br/>
-+ Select your language.<br/>
-+ Select the default for the keyboard layout as the next step.<br/>
-+ Deselect compose key in the last step.<br/>
-+ Exit the configuration tool with the esc key.<br/>
 
 > [!Tip]
 > Try whether the setting has worked. for example press Y or Z.
@@ -217,12 +204,18 @@ sudo raspi-config
 ### 5.3 Automated Installation and Configuration
 
 > [!Tip]
-> Connect your IndustrialPI 4 to the Internet for the first time via the Ethernet interface. Please use the left Ethernet port.
+> Connect your RevPi Connect 4 to the Internet for the first time via the Ethernet interface. Please use the right Ethernet port.
+
++ Open the Cockpit.
++ Under Tools you can open Terminal.
++ In the next steps, the work will be done in the terminal.
+
 
 As an alternative to manually performing the steps described in this document, an installation script is available. This script automates the installation of all required packages as well as the configuration of the necessary services and components.<br/>
-To do this, use the “Installation_and_Configuration_Script.sh” script. You find the Script in the table. Please follow the instructions in the script. These are marked with a single #.<br/>
+To do this, use the “Installation_and_Configuration_Script.sh” script. You find the Script in the table. Please follow the instructions in the script. These are commented out with a hashtag "#".<br/>
 
 + Once you have finished making changes to the script. For example place the script in your home directory in your Linux system. Follow the instructions under [10.1 Work with USB-Stick](#101-work-with-usb-stick) and replace the file name there as appropraite. Start at the point "Insert your USB stick into one of the two USB ports. Check the name of the USB with the command:"
+
 + Go to the folder where your script is located.
 + run the following command:
 ```
@@ -232,80 +225,20 @@ chmod +x Installation_and_Configuration_Script.sh
 sudo ./Installation_and_Configuration_Script.sh
 ```
 + It will take about 10 minutes for the script to complete the installations and configurations.
+
 + Once the script is finished, you no longer need to perform the following steps. This script handled them automatically. The remaining steps are important only for verification purposes.
 
 ### 5.4 Update System packages
-<!--Pat have a good tipp about the Wifi Connection, delete this line because is stuggleing the costumer 
-> [!Tip]
-> + Connect your IndustrialPI 4 to the Internet for the first time via the Ethernet interface. Please use the left Ethernet port.
-<!-- + If you connect your IndustrialPI 4 with a WiFi- Hotspot follow the points of [Set up Cockpit-IndustrialPI 4](#83-set-up-cockpit-industrialpi-4).
-> + It would be advisable to work with the Ethernet interface connection first. !!DISCUSS WITH PAT--> 
 
-+ get all updates with the commando:
-```
-sudo apt-get update
-```
-```
-sudo apt-get upgrade
-```
-> [!Tip]
-> Both commands will ask you to continue. Confirm both commands with Y. Press q when requested for upgrade information.
++ Follow the instructions under Firmware Updates for Expansion Modules &#128279;[Firmware Updates for Expansion Modules](https://revolutionpi.com/en/docs/firmware-updates)
+
+<!--screenshot unter PSENrd_3 -> Documents -> Screenshot_GitHub_Appl_with_RevPi4 ->  revolutionpi.com_en_docs_firmware_Update.png-->
 
 ### 5.5 Using the Firewall 
 
-The IndustrialPI 4 comes with a pre-installed firewall. 
-+ Connect a laptop to the right Ethernet port on the IndustrialPI 4 using an Ethernet cable.
-+ Open your browser and enter https://industrialpiXXXXXX:41443 in your search bar. For XXXXXX, enter the six-digit serial number of the IndustrialPI 4. You will find this number on the front of the IndustrialPI 4.
-+ Click under System/ Networking.
-+ Here is the Firewall – make sure the slider is enabled. (By default, the slider is enabled.)
-+ Click the Button (Edit rules and zones).
-+ You can see a table with the followring default ports. (22/TCP, 564/UDP, 41443/TCP, 5353/UDP, 80/TCP, 443/TCP) 
-+ To select additional ports, click the button (Add services).
-+ Filter the services ony by one: 8883 (mqtt-tls); 3389 (rdp); 123 (ntp); 67 (dhcp). Add the services. 
-+ Please reboot the IndustrialPI 4 after this settings.
-+ Go back to the terminal and type the command: 
-```
-sudo reboot
-```
++ Follow the instructions under Firewall &#128279;[Firewall](https://revolutionpi.com/en/knowledge/firewall)
 
-<!--
-### 5.4 Install Firewall 
-> [!Important]
-> The Lite Version Debain GNU/Linux 12 doesn´t have a Firewall preinstalled. You must install the ufw package. You will find a description of this function in the following steps.
-+ Install the package:
-```
-sudo apt-get install ufw
-```
->[!Tip]
-> Confirm with Y key.
-
-> [!Tip]
-> ufw allows you to add rules before you activate the firewall. If you activate ufw without rules, the firewall closes the necessary ports of the application.
- + list of general ports:<br/>
- 
- 1. Port 22 is for ssh (for example: Putty)
- ```
- sudo ufw allow 22/tcp
- ```
- 2. Port 41443/tcp for the browser view (Cockpit of the IndsutrialPI 4).
- ```
- sudo ufw allow 41443/tcp
- ```
-
-+ After to activate the first rules, you must to activate ufw:
-```
-sudo ufw enable
-```
-+ You can check the status of the ufw, to ensure that it is active without errors:
-```
-sudo systemctl status ufw
-```
-+ Check the rules list:
-```
-sudo ufw status
-```
-> [!Important]
-> In the following discriptions are more several port numbers are mentioned, please make sure to include these port numbers in the rules list.-->
+<!--screenshot unter PSENrd_3 -> Documents -> Screenshot_GitHub_Appl_with_RevPi4 ->  revolutionpi.com_en_docs_firewall.png-->
 
 ## 6. Install Mosquitto and Mosquitto-Clients
 <!--[Text for Mosquitto and mqtt here]-->
@@ -349,53 +282,6 @@ openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
 ```
 Creates a certificate that is valid for 365 days.
 
-<!--
-2. Generate the CA certificate:<br/>
-```
-openssl req -new -x509 -days 365 -extensions v3_ca -keyout ca.key -out ca.crt
-```
-+ When you enter the above command, many lines with plus signs and dots will appear.
-+ After that you will be asked for a password (Enter PEM pass Phrase:).
-+ Enter any password. Make sure that the settings for commissioning are sufficiently secure (security).
-+ Now you will be asked about your dates of your country, province, locality and organizations. Please fill as much as possilbe.
-+ After this procedure you have a certificate in your directory "certs".
-+ Please create a separate directory with the name "ca".
-```
-mkdir ca
-```
-+ Now put the ca.crt in this directory "ca".
-```
-sudo mv ca.crt /ca/
-```
-+ In the third step you will create the next Certificate and Key. Please create a new directory here.
-```
-mkdir server
-```
-+ Go to the directory and follow the next steps from step three onwards.
-```
-cd server
-```
-> [!Note]
-> The argument <ins>-days</ins> sets the valid period of the certificate.
-
-> [!Caution]
-> The Common Name (CN) for CA must not be the same as for the broker/server later.
-
-3. Generate the certificate signing request for the broker/server:<br/>
-```
-openssl genrsa -out server.key 2048
-```
-```
-openssl req -out server.csr -key server.key -new
-```
-> [!Important]
-> The Common Name (CN) for the broker/server should be set as the IP Adreses of broker/server.
-
-4. Sign the broker/server request with the CA certificate:<br/>
-```
-openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days 365
-```
--->
 ### 6.2 Create users and passwords for accessing to the broker 
 ```
 sudo mosquitto_passwd -c /etc/mosquitto/passwd PSENrd3_sensor
@@ -479,13 +365,7 @@ acl_file /etc/mosquitto/aclfile
 
 > [!Tip]
 > The less-than signs and greater-than signs, "<>" do not need to be written.
-<!--
-> [!Tip]
-> Remember the previous note in the last topic. Integrate the Port Number 8883 in the rules list of ufw.
- ```
- sudo ufw allow 8883
- ```
--->
+
 ### 6.5 Start mosquitto service
 ```
 sudo systemctl start mosquitto
@@ -518,77 +398,11 @@ sudo systemctl restart mosquitto
 
 ## 7. Setup and Configuration NTP Server
 
-+ Install NTP:
-```
-sudo apt-get install ntp
-```
-> [!Note]
-> An additional security package is automatically installed in this Linux system (Debain GNU/Linux 12). The next steps are therefore carried out with an ntpsec command.  
++ Follow the instructions under NTP &#128279;[Network Time Protocol](https://revolutionpi.com/en/knowledge/ntp)
 
-+ Open the NTP config file:
-```
-sudo nano /etc/ntpsec/ntp.conf
-```
-+ Add the following configuration to the ntp.config file:
-```
-server 127.127.1.0
-fudge 127.127.1.0 stratum 10
-restrict 127.0.0.1
-restrict ::1
-```
-+ Save the file.
+<!--screenshot unter PSENrd_3 -> Documents -> Screenshot_GitHub_Appl_with_RevPi4 ->  revolutionpi.com_en_doc_ntp.png-->
 
-> [!Important]
-> Comment out all other commands with #.
-
-+ Restart the ntpsec:
-```
-sudo systemctl restart ntpsec
-```
-```
-sudo systemctl enable ntpsec
-```
-+ Control whether your system clock is synchronized:
-```
-timedatectl status
-```
-+ If you need the list to find your correct time zone, enter the following command:
-```
-timedatectl list-timezones
-```
-+ For example, to set the time zone to Berlin:
-```
-sudo timedatectl set-timezone Europe/Berlin
-```
-> [!Tip]
-> The local time is now the same time as at your location. “Yes” should be displayed behind the synchronized system clock. The time zone has been changed to Europe/Berlin for this example. 
-
-+ To check the synchronization of the local system:<br/>
-```
-ntpq -p
-```
-or
-```
-ntpq -p 127.0.0.1
-```
-> [!Note]
-> The ntpq -p command displays a list of the NTP servers (Network Time Protocol) with which your local system is synchronized. This list contains important information such as the IP address of the server, the status of the connection and the synchronization quality.<br/>
-An asterisk (*) at the beginning of a line means that this NTP server is the main synchronization partner of your system. You can find an example of this in the following table:
- 
- |remote         |refid       |st| t| when| poll| reach|   delay|   offset|  jitter|
- |---------------|------------|--|--|------|---- |-----|--------|---------|--------|
- |*ntp.example.LOCAL| .LOCL.  |10| l |  18 |  64 | 377 |   0.000|   0.000 |   0.000|
-
->[!Tip]
->This synchronization can take a long time after a restart of the IndustrialPI 4 and the PSENrd 3.1. (It can take up to 6 minutes).
-<!--
->[!Tip]
->Please also note the previous note in the topic of Firewall, as well. Integrate the Port Number 123/udp in the rules list of ufw.
- ```
- sudo ufw allow 123/udp
- ```
--->
-## 8. WiFi configuration 
+## 8. WiFi configuration with guaranteed WPA2 support
 
 ### 8.1 Install dnsmasq
 
@@ -622,13 +436,7 @@ sudo systemctl enable dnsmasq
 sudo systemctl status dnsmasq
 ```
 + The status shows you that the dnsmasq service is active.
-<!--
->[!Tip]
->Please also note the previous note in the topic of Firewall, as well. Integrate the Port Number 67/udp in the rules list of ufw.
- ```
- sudo ufw allow 67/udp
- ```
--->
+
 ### 8.2 Set up WiFi Connection 
 
 >[!Important]
@@ -644,7 +452,7 @@ sudo apt upgrade
 ```
 sudo apt install hostapd
 ```
-hostapd is a package that allows you to create a router in your IndustrialPI 4 to later ensure the WPA2 protocol. <br/>
+hostapd is a package that allows you to create a router in your RevPi Connect 4 to later ensure the WPA2 protocol. <br/>
 
 + Create a configuration file:
 ```
@@ -742,28 +550,17 @@ sudo systemctl status NetworkManager.service
 >[!Note]
 >The WPA2 security protocol is now guaranteed to be used.
 
-### 8.3 Set up Cockpit-IndustrialPI 4
-+ To connect a laptop to your IndustrialPI 4. Connect the laptop to the right Ethernet port on the IndustrialPI 4 using an Ethernet cable.<br/>
-+ Open your browser and enter https://industrialpiXXXXXX:41443 in your search bar. For XXXXXX, enter the six-digit serial number of the IndustrialPI 4. You will find this number on the front of the IndustrialPI 4.
-+ Log in with the data provided on the sticker on the side of the IndutrialPI 4.
-+ The dashboard of your IndustrialPI 4 will open and is called Cockpit.
-+ Under System/ IndustrialPI you will find the field WLAN and BT. 
-+ Select WLAN country code.
-+ Switch on the WLAN slider.
-+ Make sure the Bluetooth slider is switch off.
-+ Select the external antenna (SMA) under select antenna.
-+ then restart the IndustrialPI 4:
-```
-sudo reboot
-```
+### 8.3 Set up Cockpit-RevPi Connect 4 WiFi and BT
+
+Please follow for this topic the instructions Configuration Wifi and BT. &#128279;[Set up WiFi and BT](https://revolutionpi.com/en/docs/revpi-connect-4#wlan-bt)
+
+<!--screenshot unter PSENrd_3 -> Documents -> Screenshot_GitHub_Appl_with_RevPi4 ->  revolutionpi.com_en_docs_wlan_bt.png-->
+
 >[!Tip]
->When you connect the WiFi the first time, please control in your Network Mangager "sudo nmtui" whether the IndustrialPI 4 find your desired WiFi. This Tip belongs to the subitem [5.3 Update System packages](#53-update-system-packages).
+>When you connect the WiFi the first time, please control in your Network Manager "sudo nmtui" whether the RevPi Connect 4 find your desired WiFi. This Tip belongs to the subitem [5.3 Update System packages](#53-update-system-packages).
 
 >[!Tip]
 >Use a WiFi endpoint device, e.g. a smartphone, and check whether you can see the new WiFi connection in your WiFi settings. Click on it and connect and see if you are then in the WiFi. You can see this by the checkmark and the WiFi icon.
-
->[!Tip]
->The next test is to try out the browser cockpit of your IndustrialPI 4. First connect your mobile phone or notebook to the existing Wifi connection as described in the previous tip. Then open any browser and enter the same hostname as in the settings in the previous chapter. If you are asked for a user name and password, everything is correct.
 
 ## 9. Testing of Data exchange 
 
@@ -771,12 +568,12 @@ sudo reboot
 >Before you start exchaning data, please read or note the operating manual.
 -->
 
-+ You can start by checking whether you can connect the IndustrialPI 4 system to the PSENrd 3.1. First restart the IndustrialPI 4:
++ You can start by checking whether you can connect the RevPi Connect 4 system to the PSENrd 3.1. First restart the RevPi Connect 4:
 ```
 sudo reboot
 ```
 >[!Tip]
->General tip, restarting the system is very important for many new installations. Restart the IndustrialPI 4 from time to time.
+>General tip, restarting the system is very important for many new installations. Restart the RevPi Connect 4 from time to time.
 
 >[!Tip]
 >Again, remember the synchronization time of the NTP service.
@@ -790,7 +587,7 @@ sudo tail -f /var/log/mosquitto/mosquitto.log
 New client connection from IP-Address: Portnumber as ID (p2, c1, k120).
 
 + The next step is to press Ctrl + C to exit the currently running command or process and return to the command line to enter new commands.
-+ We need the first test whether the sensor sends data to the IndustrialPI 4.
++ We need the first test whether the sensor sends data to the RevPi Connect 4.
 ```
 mosquitto_sub -p 8883 -h <IP-Address> --cafile </path/to/certs>/server.crt> -t '/PSENrd3/<ID OF YOUR SENSOR>/positionData' -u <username> -P <password> 
 ```
@@ -828,7 +625,7 @@ mosquitto_sub -p 8883 -h <IP-Address> --cafile </path/to/certs>/server.crt> -t '
 >Make sure that the USB stick comes from a trustworthy source and has not been used before on potentially compromised systems. The stick should be checked or reformatted before use to ensure maximum security.
 <!--
 >[!Note]
->The follow description shows how to copy the Python program from the GitHub repository (https://github.com/PilzDE/PSENrd3.1_live_and_IndustrialPI_4) of your workstation notebook to any USB stick and then integrate it into your IndustrialPI 4 system. Please copy the raw file of the Python program from the GitHub repository Samples and insert it into a suitable tool. Save the file and copy the program to your USB stick.-->
+>The follow description shows how to copy the Python program from the GitHub repository (https://github.com/PilzDE/PSENrd3.1_live_and_RevPi_Connect_4) of your workstation notebook to any USB stick and then integrate it into your RevPi Connect 4 system. Please copy the raw file of the Python program from the GitHub repository Samples and insert it into a suitable tool. Save the file and copy the program to your USB stick.-->
 
 + Python is already available on this oparting system. You can view the current Python version with the following command:
 ```
@@ -1024,7 +821,7 @@ Now you can start the python program on the remote desktop connection.<br/>
 ## 12. License Information
 
 >[!Note]
->This Documentation is licensed under the CC-BY-ND-4.0.txt- see the LICENSE file for details. Here you will find a short description about the LICENSE (https://creativecommons.org/licenses/by-nd/4.0/).
->Furthermore, the code snippets and the "Installation_and_Configuration_Script.sh" are subject to the LICENSE CC0-1.0.txt- see the LICENSE file for details. Here you will find a short description about the LICENSE (https://creativecommons.org/publicdomain/zero/1.0/).
+>This Documentation is licensed under the CC-BY-ND-4.0.txt- see the LICENSE file for details. Here you will find a short description about the LICENSE &#128279;(https://creativecommons.org/licenses/by-nd/4.0/).
+>Furthermore, the code snippets and the "Installation_and_Configuration_Script.sh" are subject to the LICENSE CC0-1.0.txt- see the LICENSE file for details. Here you will find a short description about the LICENSE &#128279;(https://creativecommons.org/publicdomain/zero/1.0/).
 
 Copyright (c) 2025 Pilz GmbH & Co. KG<br/>

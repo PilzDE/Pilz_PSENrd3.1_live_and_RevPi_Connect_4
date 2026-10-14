@@ -6,7 +6,7 @@ set -euo pipefail
 set -x
 
 #############################################
-# IndustrialPI 4 + PSENrd3.1 Setup Script
+# RevPi Connect 4 + PSENrd3.1 Setup Script
 # Based on Pilz README – Debian 12 (bookworm)
 #############################################
 
