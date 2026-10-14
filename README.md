@@ -94,7 +94,8 @@ The scenario described below illustrates a possible application example for usin
 
 ### 1.2 Documentation from Kunbus GmbH
 |Nr.| Discription | Part number/ Download|
-| 3 | Product Description of RevPi Connect 4 |&#128279;[www.revolutionpi.com >EN](https://revolutionpi.com/en/docs/revpi-connect-4)<br/>&#128279;[www.revolutionpi.com >DE](https://revolutionpi.com/de/docs/revpi-connect-4)<br/> |
+|---| ------------| ---------------------|
+| 1 | Product Description of RevPi Connect 4 |&#128279;[www.revolutionpi.com >EN](https://revolutionpi.com/en/docs/revpi-connect-4)<br/>&#128279;[www.revolutionpi.com >DE](https://revolutionpi.com/de/docs/revpi-connect-4)<br/> |
 
 <!--screenshot unter PSENrd_3 -> Documents -> Screenshot_GitHub_Appl_with_RevPi4 RevPi Connect 4_en_docs_.png and RevPi Connect 4_de_docs.png -->
 
