@@ -138,9 +138,9 @@ The scenario described below illustrates a possible application example for usin
 
 ## 3. Preface
 
-This application basically describes the commissioning process of a PSENrd 3.1 with an RevPi Connect 4. Both devices communicate with each other using MQTT.
-Data is sent from the PSENrd 3.1 to the internal access point of the RevPi Connect 4. This data is sent to the Python program provided and processed there.<br/>
-The basic procedure for successful basic configuration is shown here step-by-step, mostly using command lines. The operating system used is Debain GNU/Linux 12 (bookworm-arm64.img). &#128279;[www.revolutionpi.com >Operating System-Images](https://revolutionpi.com/en/docs/revpi-bookworm)<br/> 
+This application describes the commissioning process of a PSENrd 3.1 with a RevPi Connect 4. Both devices communicate via MQTT.
+Data is transmitted from the PSENrd 3.1 to the internal access point of the RevPi Connect 4. This data is then processed by the provided Python application.<br/>
+The basic configuration procedure is presented step by-step, primarily using command-line instructions. The operating system used is Debain GNU/Linux 12 (bookworm-arm64.img). &#128279;[www.revolutionpi.com >Operating System-Images](https://revolutionpi.com/en/docs/revpi-bookworm)<br/> 
 
 <!--screenshot unter PSENrd_3 -> Documents -> Screenshot_GitHub_Appl_with_RevPi4 -> revolutionpi.com_en_docs_revpi_bookworm.png -->
 
@@ -205,7 +205,7 @@ The structure of the system and components is based on:<br/>
 ### 5.3 Automated Installation and Configuration
 
 > [!Tip]
-> Connect your RevPi Connect 4 to the Internet for the first time via the Ethernet interface. Please use the right Ethernet port.
+> Connect your RevPi Connect 4 to the Internet for the first time via the Ethernet interface.
 
 + Open the Cockpit.
 + Under Tools you can open Terminal.
@@ -228,6 +228,8 @@ sudo ./Installation_and_Configuration_Script.sh
 + It will take about 10 minutes for the script to complete the installations and configurations.
 
 + Once the script is finished, you no longer need to perform the following steps. This script handled them automatically. The remaining steps are important only for verification purposes.
+
++ Please proceed to Step [8.3 Set up Cockpit-RevPi Connect 4 WiFi and BT](#83-set-up-cockpit-revpi-connect-4-wifi-and-bt), and follow the remaining steps.
 
 ### 5.4 Update System packages
 
@@ -565,8 +567,20 @@ Please follow for this topic the instructions Configuration Wifi and BT. &#12827
 
 ## 9. Testing of Data exchange 
 
+First, verify that the Mosquitto broker is running correctly on the access point by using the following commands. To perform this test, open two terminal windows.<br/>
+
++ In the first terminal window, start the subscriber:
+```
+mosquitto_sub -p 8883 -h <IP-Address> --cafile </path/to/certs>/server.crt -t 'test/topic' -v
+```
++ In the second terminal window, start the publisher: 
+```
+mosquitto_pub -p 8883 -h <IP-Address> --cafile </path/to/certs>/server.crt -t 'test/topic' -m 'Hello Mosquitto'
+```
+If the MQTT broker is configured correctly, the message "Hello Mosquitto" should be displayed in the subscriber terminal window after executing the publisher command.<br/>
+
 <!--[!Important]
->Before you start exchaning data, please read or note the operating manual.
+>Before you start exchaning data, please read or note the operating manual. 7.2.1.1 Certificate MQTT Broker.
 -->
 
 + You can start by checking whether you can connect the RevPi Connect 4 system to the PSENrd 3.1. First restart the RevPi Connect 4:
@@ -590,7 +604,7 @@ New client connection from IP-Address: Portnumber as ID (p2, c1, k120).
 + The next step is to press Ctrl + C to exit the currently running command or process and return to the command line to enter new commands.
 + We need the first test whether the sensor sends data to the RevPi Connect 4.
 ```
-mosquitto_sub -p 8883 -h <IP-Address> --cafile </path/to/certs>/server.crt> -t '/PSENrd3/<ID OF YOUR SENSOR>/positionData' -u <username> -P <password> 
+mosquitto_sub -p 8883 -h <IP-Address> --cafile </path/to/certs>/server.crt -t '/PSENrd3/<ID OF YOUR SENSOR>/positionData' -u <username> -P <password> 
 ```
 >[!Important]
 >If you already have an existing certificate, please replace "sever.crt" to "ca.crt" and specify the path to "ca.crt".
