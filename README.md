@@ -629,20 +629,18 @@ mosquitto_sub -p 8883 -h <IP-Address> --cafile </path/to/certs>/server.crt -t '/
 ## 10. Integration of a python program   
 
 >[!Note]
->The follow description shows how to get a possible python program into an IndustrialPI 4. The possible procedure for a Python program is described in detail.
-<!--
->[!Note]
->We greate a graphical python program for this application. This graphical Python program displays recognized people and counts them. The program can be found in the table at the top of this repository.-->
+>A graphical Python application was developed for this use case. The application visualizes detected persons and provides a real-time people counting function. The corresponding source code can be found in the table at the top of this repository.
+>The following description explains how to deploy the application on a RevPi Connect 4. The procedure is described step by step.
  
 ### 10.1 Work with USB-stick
 
 >[!Important]
->Make sure that the USB stick comes from a trustworthy source and has not been used before on potentially compromised systems. The stick should be checked or reformatted before use to ensure maximum security.
-<!--
->[!Note]
->The follow description shows how to copy the Python program from the GitHub repository (https://github.com/PilzDE/PSENrd3.1_live_and_RevPi_Connect_4) of your workstation notebook to any USB stick and then integrate it into your RevPi Connect 4 system. Please copy the raw file of the Python program from the GitHub repository Samples and insert it into a suitable tool. Save the file and copy the program to your USB stick.-->
+>Make sure that the USB stick comes from a trustworthy source and has not previously been used on potentially compromised systems. The USB stick should be checked or reformatted before use to help ensure maximum security.
 
-+ Python is already available on this oparting system. You can view the current Python version with the following command:
+>[!Note]
+> Please download the Python script (.py) from the table above and copy it to your USB storage device.
+
++ Python is already installed on the operating system. The currently installed Python version can be displayed using the following command:
 ```
 python3 --version
 ```
@@ -655,36 +653,34 @@ mkdir ~/my_python_program
 lsblk
 ```
 >[!Tip]
->In the last column of this table you will see the name of the mount point for your USB device, e.g. /media/usb.
+>The last column (MOUNTPOINTS) shows the mount point of the USB device.  
 
 + Create a folder for your USB Devices under the media directory: 
 ```
 sudo mkdir /media/usb
 ```
-+ Mount the example USB into your system:
++ Mount the USB storage device to your system:
 ```
 sudo mount /dev/sda1 /media/usb
 ```
 <!--Hier wird später das Sample erläutert.Das "possible_python_program.py ist ein Beipsiel-->
-+ Copy the supplied program in this new folder for example from a stick:
++ Copy the Python script (.py) in this new folder:
 ```
-sudo cp /media/usb/possible_python_program.py /home/pi/my_python_program
+sudo cp /media/usb/Pilz_Samples_Counting_Mate.py /home/pi/my_python_program
 ```
-+ After you have copied your program you could umount the USB stick:
++ After copying your program, unmount the USB stick:
 ```
 sudo umount /dev/sda1
 ```
-The next step is to change the correct mac-address and path.<br/>
+The next step is to change the sensor IDs and path.<br/>
+
 + Open the python program:
 ```
-sudo nano /home/pi/my_python_program/possible_python_program.py
+sudo nano /home/pi/my_python_program/Pilz_Samples_Counting_Mate.py
 ```
 + Change the mac-address where the "XXXXXXXXXXXX" are located.
 
->[!Tip]
->You will find the 12-digit Mac address on the back of the sensor.
-
-+ Change the path of your certificates markes with "/XXX/XXX/XXX/XXX" as well.
++ Change the path of your certificates markes with /path/to/certs/server.crt.
 
 + Save the file and exit.
 
@@ -740,25 +736,15 @@ sudo apt install xorg
 ```
 startx
 ```
-+ There will open a new window with a new commando line. Now you can use a mouse in this shell. Click behind the Commoando line.
-+ Change at first your keyboard language again. For example Germany (de):
-```
-setxkbmap de
-```
->[!Tip]
->Try whether the setting has worked. For example press Y or Z.
-
-Enlarge the display:<br/>
-+ Held down with the ctrl key and right mouse button, a menu with unicode fonts will appear.
-+ Navigate with the mouse to your desired font size.<br/>(Hold down the ctrl key and the right mouse button the whole time.)
-
++ A new window with a black background will open. Right-click to open the menu, then select Application → System → UXTerm.
++ A new terminal window with a command line will open
 + Change into the directory: 
 ```
 cd /home/pi/my_python_program
 ```
 + Execute the python program:
 ```
-python3 possible_python_program.py
+sudo python3 Pilz_Samples_Counting_Mate.py
 ```
 <!--+ You should now see a yellow GUI with a gray range area showing whether your sensor is connected. You have a counter in the yellow area.-->
 
@@ -766,11 +752,11 @@ python3 possible_python_program.py
 
 In this discription, you will use the system via remotedesktop at your workstation with an Ethernet connection. The Requirement for this is that you need a terminal program for example PuTTY. The Remotdesktop- Connection is available on a Windows PC by default.<br/>
 >[!Important]
->Observe the specifications of commissioning (security) for your application, in particular the removal of the separation of networks with defferent IP addresses. 
+>Observe the specifications of commissioning (security) for your application, in particular the removal of the separation of networks with different IP addresses. 
 
 ### 11.1 Create a new Network IP-Address
 
-First of all, you need a new Network IP-Address for the Remotedesktop Connection. For example change the third number in your IP-Address, as before. The reason in this case is, if you have the IP-Address in the same network the WLAN connection will be interrupt between PSENrd 3.1 and IndustrialPI 4.<br/> 
+First of all, you need a new Network IP-Address for the Remotedesktop Connection. For example change the third number in your IP-Address, as before. The reason in this case is, if you have the IP-Address in the same network the WLAN connection will be interrupt between PSENrd 3.1 and RevPi Connect 4.<br/> 
 
 + Please use the Network Manager:
 ```
@@ -789,6 +775,9 @@ sudo reboot
 
 ### 11.2 Install xrdp and xorg xrdp
 
+>[!Note]
+>When you used the Installation_and_Configuration_Script.sh then you no longer need this script.
+
 + Install the packages xrdp and xorg xrdp:
 ```
 sudo apt install xrdp xorgxrdp
@@ -806,7 +795,7 @@ sudo reboot
 -->
 ### 11.3 Using the Remotedesktop-Connection
 
-Connect the IndustrialPI 4 to your laptop via Ethernet cable. Then search for the Remote Desktop Connection in your search bar in your operating system.<br/>
+Connect the RevPi Connect 4 to your laptop via Ethernet cable. Then search for the Remote Desktop Connection in your search bar in your operating system.<br/>
 + A small Window with an input line opens. 
 + Please enter your Ethernet IP-Address there.
 + An identity question is displayed.
@@ -814,14 +803,13 @@ Connect the IndustrialPI 4 to your laptop via Ethernet cable. Then search for th
 >In your application, make sure that the settings for commissioning are sufficiently secure (security).
 + Please click Yes.
 + After that a login query will open.
-+ Please enter your username and your password of your IndustrialPI 4.
++ Please enter your username and your password of your RevPi Connect 4.
 + Now the graphical desktop opens directly.
 + If you want to use the python program you need a different display number.
 + You can find this number in a file it names "xrdp-sesman.log". 
 ```
 sudo nano /var/log/xrdp-sesman.log
 ```
-+ In the fourth line you will find the IP address of your PC. At the bottom of this file you will find the display number, in this case the number 10 is available.
 + Exit this file with ctrl + X.
 + Change the DISPLAY number:
 ```
