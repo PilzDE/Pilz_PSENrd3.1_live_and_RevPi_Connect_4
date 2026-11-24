@@ -151,7 +151,7 @@ The basic configuration procedure is presented step by-step, primarily using com
 
 The example here shows people counting to determine whether one or more people are present in a monitored area.<br/>
 
-There are several requirements for the realization of this application:<br/>
+There are several requirements for the realisation of this application:<br/>
 
 + Data transmission takes place via MQTT.<br/>
 + Evaluation of the sensor data in the RevPi Connect 4 in real time.<br/>
