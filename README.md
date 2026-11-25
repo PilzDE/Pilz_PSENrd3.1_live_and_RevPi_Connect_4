@@ -14,7 +14,7 @@ We are grateful for any feedback on the contents.<br/>
 May 2026<br/>
 All rights to this publication are reserved by Pilz GmbH & Co. KG.
 We reserve the right to amend specifications without prior notice. Copies may be made for the user’s internal purposes.
-The names of products, goods and technologies used in this manual are trademarks of the respective companies. Please note the current information about the products, their licenses and registered trademarks in the documents listed in [Useful documentation](#1-useful-documentation).<br/>
+The names of products, goods and technologies used in this manual are trademarks of the respective companies. Please note the current information about the products, their licenses and registered trademarks in the documents listed in [Useful documentation](#1-useful-documentation-and-links-to-third-party-websites).<br/>
 
 ## Industrial Security
 
