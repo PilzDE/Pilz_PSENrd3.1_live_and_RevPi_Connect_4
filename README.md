@@ -666,7 +666,7 @@ sudo mount /dev/sda1 /media/usb
 <!--Hier wird später das Sample erläutert.Das "possible_python_program.py ist ein Beipsiel-->
 + Copy the Python script (.py) in this new folder:
 ```
-sudo cp /media/usb/Pilz_Samples_Counting_Mate.py /home/pi/my_python_program
+sudo cp /media/usb/Pilz_Sample_Counting_Mate.py /home/pi/my_python_program
 ```
 + After copying your program, unmount the USB stick:
 ```
@@ -676,15 +676,17 @@ The next step is to change the sensor IDs and path.<br/>
 
 + Open the python program:
 ```
-sudo nano /home/pi/my_python_program/Pilz_Samples_Counting_Mate.py
+sudo nano /home/pi/my_python_program/Pilz_Sample_Counting_Mate.py
 ```
-+ Change the mac-address where the "XXXXXXXXXXXX" are located.
-
-+ Change the path of your certificates markes with /path/to/certs/server.crt.
++ Follow the instructions marked with a # in the Python script.
 
 + Save the file and exit.
 
-### 10.2 Install additional Python packages and graphical packages  
+### 10.2 Install additional Python packages and graphical packages 
+
+>[!Note]
+>When you used the Installation_and_Configuration_Script.sh then you no longer need this Installations.
+
 For the possible python program you need a Python package for installation for execution.<br/>
 + Install tkinter:
 ```
@@ -736,7 +738,7 @@ sudo apt install xorg
 ```
 startx
 ```
-+ A new window with a black background will open. Right-click to open the menu, then select Application → System → UXTerm.
++ A new window with a black background will open. Right-click to open the menu,<br/> then select Application → System → UXTerm.
 + A new terminal window with a command line will open
 + Change into the directory: 
 ```
@@ -744,7 +746,7 @@ cd /home/pi/my_python_program
 ```
 + Execute the python program:
 ```
-sudo python3 Pilz_Samples_Counting_Mate.py
+sudo python3 Pilz_Sample_Counting_Mate.py
 ```
 <!--+ You should now see a yellow GUI with a gray range area showing whether your sensor is connected. You have a counter in the yellow area.-->
 
@@ -776,7 +778,7 @@ sudo reboot
 ### 11.2 Install xrdp and xorg xrdp
 
 >[!Note]
->When you used the Installation_and_Configuration_Script.sh then you no longer need this script.
+>When you used the Installation_and_Configuration_Script.sh then you no longer need this Installations.
 
 + Install the packages xrdp and xorg xrdp:
 ```
@@ -819,7 +821,10 @@ export DISPLAY=:10.0
 ```
 echo $DISPLAY
 ```
-Now you can start the python program on the remote desktop connection.<br/>
++ Start the Python script with: 
+```
+sudo -E python3 PILZ_Sample_Counting_Mate.py
+```
 
 ## 12. License Information
 
